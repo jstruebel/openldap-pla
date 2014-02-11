@@ -9,16 +9,9 @@ install()
 }
 
 WEBROOT=/var/www/phpldapadmin
-INITHOOKS=/usr/lib/inithooks
 
 # add auto_number configuration to phpLDAPadmin
 CONF=$WEBROOT/config/config.php
 sed -i "s|^\?>.*|\$servers->setValue('auto_number','enable',true);\n\$servers->setValue('auto_number','mechanism','search');\n\$servers->setValue('auto_number','search_base','ou=Users,dc=example,dc=com');\n\$servers->setValue('auto_number','min',array('uidNumber'=>1000,'gidNumber'=>1000));\n\?>|" $CONF
-
-# update openldap inithook scripts
-CONF=$INITHOOKS/bin/openldap-reinit.sh
-sed -i "s|cn\=default|cn\=certssl|" $CONF
-sed -i "s|cn: default.*|cn: certssl|" $CONF
-sed -i "s|^gidnumber:.*|gidnumber: 1000|" $CONF
 
 sed -i "s|^# update ldapscripts|sed -i \"s\|search_base.*\|search_base\',\'ou=Users,\$LDAP_BASEDN\');\|\" \$CONF\n\nCONF=/var/www/phpldapadmin/templates/creation/tkl-shadowAccount.xml\nsed -i \"s\|@example.com\|@\$LDAP_DOMAIN\|\" \$CONF\n\n# update ldapscripts|" $CONF
