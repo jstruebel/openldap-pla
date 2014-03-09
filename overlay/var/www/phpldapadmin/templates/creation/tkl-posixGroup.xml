@@ -24,7 +24,6 @@
 	<order>2</order>
 	<page>1</page>
 	<value>=php.GetNextNumber(/;gidNumber)</value>
-	<readonly>1</readonly>
 	<spacer>1</spacer>
 </attribute>
 <attribute id="memberUid">
