@@ -13,7 +13,7 @@ WEBROOT=/var/www/phpldapadmin
 # add auto_number configuration to phpLDAPadmin
 CONF=$WEBROOT/config/config.php
 sed -i "s|^\?>.*|\$servers->setValue('custom','pages_prefix','tkl-');\n\$servers->setValue('auto_number','enable',true);\n\$servers->setValue('auto_number','mechanism','search');\n\$servers->setValue('auto_number','search_base','ou=Users,dc=example,dc=com');\n\$servers->setValue('auto_number','min',array('uidNumber'=>2000,'gidNumber'=>2000));\n\?>|" $CONF
-sed -i "s|\$config->custom->appearance\['hide_template_warning'\].*|&\n\$config->custom->appearance['custom_templates_only'] = true|" $CONF
+sed -i "s|\$config->custom->appearance\['hide_template_warning'\].*|&\n\$config->custom->appearance['custom_templates_only'] = true;|" $CONF
 
 # add reinit options
 CONF=/usr/lib/inithooks/bin/openldap-reinit.sh
