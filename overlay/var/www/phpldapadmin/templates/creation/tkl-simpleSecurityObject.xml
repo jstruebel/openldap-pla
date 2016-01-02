@@ -32,29 +32,12 @@
 </attribute>
 <attribute id="userPassword">
 	<display>Password</display>
-	<helper>
-		<default>ssha</default>
-		<display>Encryption</display>
-		<id>enc</id>
-		<location>side</location>
-		<value>blowfish</value>
-		<value>clear</value>
-		<value>crypt</value>
-		<value>ext_des</value>
-		<value>md5</value>
-		<value>md5crypt</value>
-		<value>sha</value>
-		<value>smd5</value>
-		<value>ssha</value>
-	</helper>
 	<icon>lock.png</icon>
 	<value><![CDATA[=php.RandomPassword()]]></value>
 	<order>5</order>
 	<page>1</page>
 	<post>=php.PasswordEncrypt(%enc%;%userPassword%)</post>
-	<!--
-	<verify>1</verify>
-	-->
+	<verify>0</verify>
 </attribute>
 </attributes>
 
